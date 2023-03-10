@@ -14,7 +14,8 @@ start() {
     # Scripts Here
     open_port
     write_firewall_start
-    daemon ${mbroot}/apps/${appname}/bin/${appname} -p ${port} -d ${mbroot}/apps/${appname}/config/${appname}.db -l ${mbroot}/var/log/${appname}.log -s $scope 
+    #daemon ${mbroot}/apps/${appname}/bin/${appname} -p ${port} -d ${mbroot}/apps/${appname}/config/${appname}.db -l ${mbroot}/var/log/${appname}.log -s $scope 
+	daemon ${mbroot}/apps/${appname}/bin/${appname} -a [::] -p ${port} -d ${mbroot}/apps/${appname}/config/${appname}.db -l ${mbroot}/var/log/${appname}.log -r $scope 
     if [ $? -ne 0 ]; then
         logsh "【$service】" "启动${appname}服务失败！"
     else
